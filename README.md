@@ -20,6 +20,8 @@ Using node `582`, 852 consecutive one-minute observations, and a chronological 8
 | RMSE | 1.702 °C |
 | R² | 0.160 |
 
+![Actual vs predicted 10-minute temperature](reports/actual_vs_predicted.png)
+
 This is a small proof-of-pipeline experiment, not a production thermal-control model. The next meaningful improvement is evaluating more continuous node windows and comparing against persistence, XGBoost, and time-aware validation folds.
 
 ## Data
