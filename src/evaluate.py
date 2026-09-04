@@ -4,6 +4,10 @@ import argparse
 from pathlib import Path
 
 import joblib
+import matplotlib
+
+# Evaluation is a CLI workflow and must also run on headless machines/CI.
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import pandas as pd
 

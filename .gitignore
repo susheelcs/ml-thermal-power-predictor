@@ -9,6 +9,7 @@ __pycache__/
 /data/*.csv
 /data/*.parquet
 /data/raw/
+/data/processed/
 
 # Trained models
 /models/*.joblib
@@ -16,3 +17,6 @@ __pycache__/
 
 # Experiment outputs
 outputs/
+
+# Local tooling and dependency cache
+/work/

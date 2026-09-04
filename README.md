@@ -8,7 +8,7 @@ Predict near-future CPU/system temperature from workload, power, frequency, and 
 
 ## Project status
 
-Initial project scaffold. The first milestone uses a CSV telemetry file and a Random Forest baseline. Dataset-specific column mapping will be added after selecting a subset of the M100 ExaData dataset.
+The M100 March 2021 schema has been validated and a reproducible first subset builder is included. The initial model predicts the future `p0_core0_temp` reading for one Marconi100 node from current thermal, power, and utilization telemetry. See `data/README.md` for the exact raw metrics and selected window.
 
 ## Data
 
@@ -17,10 +17,10 @@ This project is designed for the Marconi100 (M100) ExaData dataset. See `data/RE
 ## Pipeline
 
 ```text
-Telemetry CSV
+M100 Parquet metrics
      |
      v
-Preprocessing -> feature engineering -> time-aware train/test split
+One-minute alignment -> feature engineering -> time-aware train/test split
      |
      v
 Random Forest baseline
@@ -40,17 +40,18 @@ pip install -r requirements.txt
 
 ## Usage
 
-Place a prepared telemetry CSV at `data/telemetry.csv` and run:
+Build the documented March 2021 subset from the locally extracted data, then train the baseline. Replace the raw-data path with your own location.
 
 ```bash
-python -m src.train --input data/telemetry.csv --target temperature --horizon 10
+python -m src.build_m100_subset --raw-root /path/to/year_month=21-03
+python -m src.train --input data/processed/m100_node582_first_window.csv --target temperature_c --horizon 10
 ```
 
 The input CSV should contain a timestamp column plus numeric telemetry features. The training script creates a future-temperature target by shifting the temperature column by the requested number of samples.
 
 ## Planned milestones
 
-- [ ] Validate M100 ExaData subset and exact columns
+- [x] Validate M100 ExaData subset and exact columns
 - [ ] Establish Random Forest baseline
 - [ ] Add XGBoost comparison
 - [ ] Add thermal-risk classification

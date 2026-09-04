@@ -18,4 +18,6 @@ def test_future_target_and_lags(tmp_path: Path) -> None:
 
     data = load_and_prepare(str(path), horizon=2)
     assert "temperature_lag_1" in data.X.columns
-    assert data.y.iloc[0] == 2
+    # The first usable row is timestamp 5 because the longest feature lag is 5;
+    # with a two-sample forecast horizon its target is timestamp 7.
+    assert data.y.iloc[0] == 7
