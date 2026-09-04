@@ -20,6 +20,16 @@ METRICS = {
 }
 
 
+def resolve_raw_root(raw_root: Path) -> Path:
+    """Resolve raw dataset directory, navigating into year_month= subfolder if needed."""
+    if (raw_root / "plugin=ipmi_pub").is_dir():
+        return raw_root
+    year_months = list(raw_root.glob("year_month=*"))
+    if year_months and (year_months[0] / "plugin=ipmi_pub").is_dir():
+        return year_months[0]
+    return raw_root
+
+
 def read_metric(raw_root: Path, plugin: str, metric: str, node: str) -> pd.Series:
     """Read one metric for one node, resampled as one-minute means."""
     path = raw_root / f"plugin={plugin}" / f"metric={metric}" / "a_0.parquet"
@@ -29,11 +39,17 @@ def read_metric(raw_root: Path, plugin: str, metric: str, node: str) -> pd.Serie
     frame = table.to_pandas()[["timestamp", "value"]]
     if frame.empty:
         raise ValueError(f"No observations for node {node} in {plugin}/{metric}")
-    return frame.set_index("timestamp")["value"].sort_index().resample("1min").mean()
+    series = frame.set_index("timestamp")["value"].sort_index().resample("1min").mean()
+    # Normalize DatetimeIndex unit to nanoseconds to avoid pandas 2.2 DatetimeIndex
+    # intersection bug on millisecond units with frequency.
+    if hasattr(series.index, "as_unit"):
+        series.index = series.index.as_unit("ns")
+    return series
 
 
 def build_subset(raw_root: Path, node: str, start: str, end: str) -> pd.DataFrame:
     """Build a complete, minute-level feature table for the requested UTC window."""
+    raw_root = resolve_raw_root(raw_root)
     series = {
         name: read_metric(raw_root, plugin, metric, node)
         for name, (plugin, metric) in METRICS.items()
@@ -48,7 +64,12 @@ def build_subset(raw_root: Path, node: str, start: str, end: str) -> pd.DataFram
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build a small M100 thermal-model CSV subset.")
-    parser.add_argument("--raw-root", required=True, type=Path, help="Extracted year_month=21-03 directory")
+    parser.add_argument(
+        "--raw-root",
+        type=Path,
+        default=Path("data/raw/21-03"),
+        help="Extracted 21-03 or year_month=21-03 directory (default: data/raw/21-03)",
+    )
     parser.add_argument("--node", default="582")
     parser.add_argument("--start", default="2021-03-01T20:18:00Z")
     parser.add_argument("--end", default="2021-03-02T10:29:00Z")
@@ -66,3 +87,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+

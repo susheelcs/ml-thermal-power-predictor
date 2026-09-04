@@ -9,7 +9,7 @@ __pycache__/
 /data/*.csv
 /data/*.parquet
 /data/raw/
-/data/processed/
+.pytest_temp/
 
 # Trained models
 /models/*.joblib

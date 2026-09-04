@@ -8,7 +8,19 @@ Predict near-future CPU/system temperature from workload, power, frequency, and 
 
 ## Project status
 
-The M100 March 2021 schema has been validated and a reproducible first subset builder is included. The initial model predicts the future `p0_core0_temp` reading for one Marconi100 node from current thermal, power, and utilization telemetry. See `data/README.md` for the exact raw metrics and selected window.
+The M100 March 2021 schema has been validated and a reproducible first subset builder is included. The initial model predicts the future `p0_core0_temp` reading for one Marconi100 node from current thermal, power, and utilization telemetry. See `data/README.md` for the exact raw metrics and selected window, and [`reports/first_experiment.md`](reports/first_experiment.md) for results and limitations.
+
+## First experiment result
+
+Using node `582`, 852 consecutive one-minute observations, and a chronological 80/20 split, the Random Forest baseline predicts CPU-core temperature 10 minutes ahead with:
+
+| Metric | Result |
+| --- | ---: |
+| MAE | 1.263 °C |
+| RMSE | 1.702 °C |
+| R² | 0.160 |
+
+This is a small proof-of-pipeline experiment, not a production thermal-control model. The next meaningful improvement is evaluating more continuous node windows and comparing against persistence, XGBoost, and time-aware validation folds.
 
 ## Data
 
@@ -40,24 +52,39 @@ pip install -r requirements.txt
 
 ## Usage
 
-Build the documented March 2021 subset from the locally extracted data, then train the baseline. Replace the raw-data path with your own location.
+The processed dataset for the first experiment is included at `data/processed/m100_node582_first_window.csv`. To train and evaluate the baseline immediately:
 
 ```bash
-python -m src.build_m100_subset --raw-root /path/to/year_month=21-03
 python -m src.train --input data/processed/m100_node582_first_window.csv --target temperature_c --horizon 10
+python -m src.evaluate --input data/processed/m100_node582_first_window.csv --target temperature_c
 ```
 
-The input CSV should contain a timestamp column plus numeric telemetry features. The training script creates a future-temperature target by shifting the temperature column by the requested number of samples.
+To rebuild the dataset from raw M100 Parquet telemetry (e.g. from an extracted `21-03` download folder or `data/raw/21-03`):
+
+```bash
+python -m src.build_m100_subset --raw-root /path/to/21-03
+```
+
+`--raw-root` defaults to `data/raw/21-03` and accepts either the directory containing `year_month=21-03` or the `year_month=21-03` directory directly.
+
+## Tests
+
+Run the test suite with pytest:
+
+```bash
+pytest
+```
 
 ## Planned milestones
 
 - [x] Validate M100 ExaData subset and exact columns
-- [ ] Establish Random Forest baseline
+- [x] Establish Random Forest baseline
+- [x] Add actual-vs-predicted evaluation plots
+- [x] Add automated unit tests (`pytest`)
 - [ ] Add XGBoost comparison
 - [ ] Add thermal-risk classification
-- [ ] Add actual-vs-predicted plots
 - [ ] Add inference CLI
-- [ ] Add tests and reproducible experiment configuration
+- [ ] Add multi-node / multi-core evaluation
 - [ ] Add lightweight dashboard
 
 ## Attribution
