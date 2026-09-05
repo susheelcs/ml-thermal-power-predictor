@@ -1,22 +1,30 @@
+# Python
 .venv/
+venv/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.pytest_temp/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Editors and operating systems
 .DS_Store
+.idea/
+.vscode/
 .ipynb_checkpoints/
 
-# Local/raw datasets
-/data/*.csv
-/data/*.parquet
-/data/raw/
-.pytest_temp/
+# Original large M100 downloads
+/data/raw/*
+!/data/raw/README.md
+*.tar
+*.tar.gz
 
-# Trained models
-/models/*.joblib
-/models/*.pkl
-
-# Experiment outputs
+# Temporary or user-generated outputs
 outputs/
+*.log
 
-# Local tooling and dependency cache
-/work/
+# The small processed subset, published models, and reports are intentionally tracked.

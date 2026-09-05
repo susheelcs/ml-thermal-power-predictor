@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: ML Thermal & Power Predictor
+message: >-
+  If you use this software, cite this repository and the M100 ExaData source
+  publication listed in the references.
+type: software
+authors:
+  - family-names: Maurya
+    given-names: Susheel
+version: 1.0.0
+date-released: 2026-09-05
+license: MIT
+repository-code: https://github.com/susheelcs/ml-thermal-power-predictor
+references:
+  - type: article
+    title: "M100 ExaData: a data collection campaign on the CINECA's Marconi100 Tier-0 supercomputer"
+    authors:
+      - family-names: Borghesi
+        given-names: Andrea
+      - family-names: Di Santi
+        given-names: Carmine
+      - family-names: Molan
+        given-names: Martin
+    doi: 10.1038/s41597-023-02174-3
+    year: 2023
+  - type: dataset
+    title: "M100 dataset 2: from 21-01 to 21-06"
+    doi: 10.5281/zenodo.7589131
+    year: 2023

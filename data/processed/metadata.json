@@ -1,0 +1,249 @@
+{
+  "rows": 10068,
+  "columns": [
+    "node",
+    "timestamp",
+    "cpu_temp_mean",
+    "cpu_temp_max",
+    "cpu_temp_sensor_count",
+    "ambient",
+    "p0_power",
+    "p1_power",
+    "total_power",
+    "p0_vdd_temp",
+    "p1_vdd_temp",
+    "cpu_user",
+    "cpu_system",
+    "cpu_idle",
+    "cpu_wio",
+    "cpu_speed",
+    "load_one",
+    "load_five",
+    "load_fifteen",
+    "cpu_busy",
+    "cpu_socket_power",
+    "hour_utc",
+    "day_of_week_utc"
+  ],
+  "nodes": [
+    "119",
+    "123",
+    "151",
+    "198",
+    "236",
+    "35",
+    "38",
+    "419",
+    "435",
+    "436",
+    "578",
+    "841"
+  ],
+  "timestamp_min": "2021-03-03T00:00:00+00:00",
+  "timestamp_max": "2021-03-03T13:58:00+00:00",
+  "missing_percent": {
+    "node": 0.0,
+    "timestamp": 0.0,
+    "cpu_temp_mean": 0.0,
+    "cpu_temp_max": 0.0,
+    "cpu_temp_sensor_count": 0.0,
+    "ambient": 0.0,
+    "p0_power": 0.0,
+    "p1_power": 0.0,
+    "total_power": 0.0,
+    "p0_vdd_temp": 0.0,
+    "p1_vdd_temp": 0.0,
+    "cpu_user": 27.195,
+    "cpu_system": 27.195,
+    "cpu_idle": 27.195,
+    "cpu_wio": 27.205,
+    "cpu_speed": 0.368,
+    "load_one": 12.694,
+    "load_five": 12.694,
+    "load_fifteen": 12.694,
+    "cpu_busy": 27.195,
+    "cpu_socket_power": 0.0,
+    "hour_utc": 0.0,
+    "day_of_week_utc": 0.0
+  },
+  "numeric_ranges": {
+    "cpu_temp_mean": {
+      "minimum": 33.44444444444445,
+      "maximum": 69.11111111111111,
+      "mean": 57.037265690526645
+    },
+    "cpu_temp_max": {
+      "minimum": 34.0,
+      "maximum": 71.66666666666667,
+      "mean": 60.60690637001721
+    },
+    "cpu_temp_sensor_count": {
+      "minimum": 4.0,
+      "maximum": 8.0,
+      "mean": 6.833333333333333
+    },
+    "ambient": {
+      "minimum": 14.0,
+      "maximum": 28.600000381469727,
+      "mean": 25.04111671447754
+    },
+    "p0_power": {
+      "minimum": 24.666666666666668,
+      "maximum": 229.33333333333334,
+      "mean": 113.64638789564296
+    },
+    "p1_power": {
+      "minimum": 22.0,
+      "maximum": 214.0,
+      "mean": 104.68787246722289
+    },
+    "total_power": {
+      "minimum": 380.0,
+      "maximum": 1366.6666666666667,
+      "mean": 882.1507085154283
+    },
+    "p0_vdd_temp": {
+      "minimum": 26.0,
+      "maximum": 51.333333333333336,
+      "mean": 42.5821497152695
+    },
+    "p1_vdd_temp": {
+      "minimum": 22.666666666666668,
+      "maximum": 49.0,
+      "mean": 39.79419944378228
+    },
+    "cpu_user": {
+      "minimum": 0.0,
+      "maximum": 99.19999694824219,
+      "mean": 39.8304328918457
+    },
+    "cpu_system": {
+      "minimum": 0.0,
+      "maximum": 6.800000190734863,
+      "mean": 0.6145406365394592
+    },
+    "cpu_idle": {
+      "minimum": 0.6000000238418579,
+      "maximum": 100.0,
+      "mean": 59.552974700927734
+    },
+    "cpu_wio": {
+      "minimum": 0.0,
+      "maximum": 0.0,
+      "mean": 0.0
+    },
+    "cpu_speed": {
+      "minimum": 3800.0,
+      "maximum": 3800.0,
+      "mean": 3800.0
+    },
+    "load_one": {
+      "minimum": 0.0,
+      "maximum": 138.72000122070312,
+      "mean": 56.19935607910156
+    },
+    "load_five": {
+      "minimum": 0.0,
+      "maximum": 131.40499877929688,
+      "mean": 56.09870910644531
+    },
+    "load_fifteen": {
+      "minimum": 0.25,
+      "maximum": 130.02999877929688,
+      "mean": 55.826560974121094
+    },
+    "cpu_busy": {
+      "minimum": 0.0,
+      "maximum": 99.4000015258789,
+      "mean": 40.44497299194336
+    },
+    "cpu_socket_power": {
+      "minimum": 50.66666666666667,
+      "maximum": 428.66666666666663,
+      "mean": 218.33426036286582
+    },
+    "hour_utc": {
+      "minimum": 0.0,
+      "maximum": 13.0,
+      "mean": 6.492252681764005
+    },
+    "day_of_week_utc": {
+      "minimum": 2.0,
+      "maximum": 2.0,
+      "mean": 2.0
+    }
+  },
+  "source_partition": "year_month=21-03",
+  "requested_start": "2021-03-03T00:00:00+00:00",
+  "requested_end_exclusive": "2021-03-10T00:00:00+00:00",
+  "frequency": "1min",
+  "selected_core_temperature_metrics": [
+    "p0_core10_temp",
+    "p0_core11_temp",
+    "p0_core20_temp",
+    "p0_core21_temp",
+    "p1_core10_temp",
+    "p1_core11_temp",
+    "p1_core14_temp",
+    "p1_core15_temp"
+  ],
+  "selected_single_metrics": {
+    "ambient": {
+      "plugin": "ipmi_pub",
+      "metric": "ambient"
+    },
+    "p0_power": {
+      "plugin": "ipmi_pub",
+      "metric": "p0_power"
+    },
+    "p1_power": {
+      "plugin": "ipmi_pub",
+      "metric": "p1_power"
+    },
+    "total_power": {
+      "plugin": "ipmi_pub",
+      "metric": "total_power"
+    },
+    "p0_vdd_temp": {
+      "plugin": "ipmi_pub",
+      "metric": "p0_vdd_temp"
+    },
+    "p1_vdd_temp": {
+      "plugin": "ipmi_pub",
+      "metric": "p1_vdd_temp"
+    },
+    "cpu_user": {
+      "plugin": "ganglia_pub",
+      "metric": "cpu_user"
+    },
+    "cpu_system": {
+      "plugin": "ganglia_pub",
+      "metric": "cpu_system"
+    },
+    "cpu_idle": {
+      "plugin": "ganglia_pub",
+      "metric": "cpu_idle"
+    },
+    "cpu_wio": {
+      "plugin": "ganglia_pub",
+      "metric": "cpu_wio"
+    },
+    "cpu_speed": {
+      "plugin": "ganglia_pub",
+      "metric": "cpu_speed"
+    },
+    "load_one": {
+      "plugin": "ganglia_pub",
+      "metric": "load_one"
+    },
+    "load_five": {
+      "plugin": "ganglia_pub",
+      "metric": "load_five"
+    },
+    "load_fifteen": {
+      "plugin": "ganglia_pub",
+      "metric": "load_fifteen"
+    }
+  },
+  "selection_method": "automatic overlap coverage"
+}

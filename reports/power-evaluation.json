@@ -1,0 +1,24 @@
+{
+  "model": "models/power_5min.joblib",
+  "task": "power",
+  "selected_model": "ridge",
+  "test_rows": 1488,
+  "model_metrics": {
+    "mae": 57.42820941610226,
+    "rmse": 81.16405476803463,
+    "r2": 0.8162945264074762,
+    "median_absolute_error": 39.903317855662806,
+    "within_25": 0.36760752688172044,
+    "within_50": 0.5604838709677419,
+    "within_100": 0.8138440860215054
+  },
+  "persistence_metrics": {
+    "mae": 70.95430107526882,
+    "rmse": 103.62529571291466,
+    "r2": 0.7005487075928007,
+    "median_absolute_error": 46.66666666666663,
+    "within_25": 0.3689516129032258,
+    "within_50": 0.5268817204301075,
+    "within_100": 0.7325268817204301
+  }
+}

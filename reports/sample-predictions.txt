@@ -1,0 +1,4 @@
+node                 timestamp        forecast_timestamp  predicted_cpu_temp_max            unit
+ 841 2021-03-03 13:58:00+00:00 2021-03-03 14:03:00+00:00               59.072165 degrees Celsius
+node                 timestamp        forecast_timestamp  predicted_total_power  unit
+ 841 2021-03-03 13:58:00+00:00 2021-03-03 14:03:00+00:00             608.341322 watts

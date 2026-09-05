@@ -1,0 +1,40 @@
+{
+  "model": "models/temperature_5min.joblib",
+  "task": "temperature",
+  "selected_model": "ridge",
+  "test_rows": 1488,
+  "model_metrics": {
+    "mae": 1.186035448249093,
+    "rmse": 2.02248269710948,
+    "r2": 0.9205925463301623,
+    "median_absolute_error": 0.7746414088918812,
+    "within_1": 0.6048387096774194,
+    "within_2": 0.8400537634408602
+  },
+  "persistence_metrics": {
+    "mae": 1.2766577060931898,
+    "rmse": 2.2734490952142443,
+    "r2": 0.8996627696091395,
+    "median_absolute_error": 0.6666666666666714,
+    "within_1": 0.6713709677419355,
+    "within_2": 0.8279569892473119
+  },
+  "high_temperature_proxy": {
+    "threshold": 69.33333333333333,
+    "precision": 0.7878787878787878,
+    "recall": 0.5579399141630901,
+    "f1": 0.6532663316582915,
+    "accuracy": 0.907258064516129,
+    "confusion_matrix": [
+      [
+        1220,
+        35
+      ],
+      [
+        103,
+        130
+      ]
+    ],
+    "positive_rows": 233
+  }
+}
